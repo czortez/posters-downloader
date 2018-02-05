@@ -1,0 +1,13 @@
+{
+    "name": "rado/class",
+    "authors": [
+        {
+            "name": "Radosław Ziemniewicz",
+            "email": "radoslaw.ziemniewicz@home.com.pl"
+        }
+    ],
+    "require": {},
+        "autoload": {
+            "psr-4": {"Rado\\": "src/Rado"}
+    	}
+}
