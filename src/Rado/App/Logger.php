@@ -21,9 +21,9 @@ class Logger
      *
      * @param Rado\App\Config $config obiekt konfiguracji
      *
-     * @return Rado\FileDownloader
+     * @return Rado\Logger
      */
-    public function setConfig(Config $config): FileDownloader
+    public function setConfig(Config $config): Logger
     {
             $this->config = $config;
 
