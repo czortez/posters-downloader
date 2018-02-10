@@ -6,15 +6,18 @@ declare (strict_types = 1);
 // przestrzeń Rado, pozwala nam mieć pewność, że nie będzie kolizji nazw klas
 // z innymi bibliotekami, a także pozwoli nam na otwarcie kodu do użcyia
 // w innych projektach
+
 namespace Rado;
 
-// aliasy, czyli informujemy PHP, że w tej klasie będziemy mogli używać
-// skróconych nazw: Config, Logger i Helper, które będą się odnosić do odpowiednich
-// nazw pełnych:
-use Rado\App \{
-    Config, Logger
-};
+
+
+
+use Rado\App \{Config, Logger};
 use Rado\Tool\Helper;
+use Symfony\Component\Filesystem\Filesystem;
+
+
+
 
 /**
  * Klasa odpowiedzialna za pobieranie plikow ze zdalnych serwerow.
@@ -84,8 +87,13 @@ class FileDownloader
      */
     public function downloadToFile(string $url, string $destinationFile) : void
     {
-        file_put_contents($destinationFile, $this->download($url));
-        $this->logger->saveLog("Zakonczenie pobierania pliku: {$destinationFile}");
+       
+        $fs = new Filesystem();
+        $fs->copy($url, $destinationFile);
+         $this->logger->saveLog("Zakonczenie pobierania pliku: {$destinationFile}");
+      
+    
+
     }
 
     /**
